@@ -25,6 +25,7 @@ public class PruebaHashMap {
 				
 				switch(opcion) {
 				case 1:
+					System.out.println(ra.seleccionarCarrera());
 					break;
 					
 				case 2:

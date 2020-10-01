@@ -6,6 +6,7 @@ public class PruebaHashMap {
 	public static void main(String[] args) {
 		
 		Scanner entrada = new Scanner(System.in);
+		RegistroAlumnos ra = new RegistroAlumnos();
 		boolean candado = true;
 		
 		while(candado) {
@@ -52,6 +53,7 @@ public class PruebaHashMap {
 			}catch(InputMismatchException error) {
 				System.out.println("\nError en la entrada de datos<" + error + ">, por favor pueba de nuevo\n");
 				entrada.nextLine();
+				ra.limpiarMemoria();
 			}
 		}
 

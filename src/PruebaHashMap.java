@@ -22,10 +22,11 @@ public class PruebaHashMap {
 			try {
 				
 				byte opcion = entrada.nextByte();
+				System.out.println();
 				
 				switch(opcion) {
 				case 1:
-					System.out.println(ra.seleccionarCarrera());
+					ra.llenarLista();
 					break;
 					
 				case 2:
@@ -38,6 +39,7 @@ public class PruebaHashMap {
 					break;
 					
 				case 5:
+					ra.mostrarInscritosDespues();
 					break;
 					
 				case 6:
@@ -52,7 +54,7 @@ public class PruebaHashMap {
 				System.out.println();
 	
 			}catch(InputMismatchException error) {
-				System.out.println("\nError en la entrada de datos<" + error + ">, por favor pueba de nuevo\n");
+				System.out.println("\nError en la entrada de datos<" + error + ">, regresaras al menu principal\n");
 				entrada.nextLine();
 				ra.limpiarMemoria();
 			}

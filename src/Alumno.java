@@ -4,16 +4,21 @@ public class Alumno {
 	private String nombre;
 	private int edad;
 	private String carrera;
+	private int folio;
 	private String fechaInscripcion;
 	
 	public Alumno() {}
-	public Alumno(String nombre, int edad, String carrera, String fechaInscripcion){
+	public Alumno(int folio, String nombre, int edad, String carrera, String fechaInscripcion){
 		this.nombre = nombre;
+		this.folio = folio;
 		this.edad = edad;
 		this.carrera = carrera;
 		this.fechaInscripcion = fechaInscripcion;
 	}
 	
+	public int getFolio() {
+		return folio;
+	}
 	public String getNombre() {
 		return nombre;
 	}

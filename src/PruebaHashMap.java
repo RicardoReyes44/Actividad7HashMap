@@ -13,9 +13,9 @@ public class PruebaHashMap {
 			System.out.println("----------Menu principal-----------");
 			System.out.println("1.- Llenar lista");
 			System.out.println("2.- Vaciar lista");
-			System.out.println("3.- Mostrar aumnos por carrera");
+			System.out.println("3.- Mostrar alumnos por carrera");
 			System.out.println("4.- Calcular promedio de edades");
-			System.out.println("5.- Mostrar los alumnos que se incribieron antes del (10/08/2016)");
+			System.out.println("5.- Mostrar los alumnos que se incribieron despues del (10/08/2016)");
 			System.out.println("6.- Salir");
 			System.out.print("Introduce opcion: ");
 			
@@ -30,12 +30,15 @@ public class PruebaHashMap {
 					break;
 					
 				case 2:
+					ra.vaciarLista();
 					break;
 					
 				case 3:
+					ra.mostrarAlumnosCarrera();
 					break;
 					
 				case 4:
+					System.out.println("Promedio: " + ra.calcularPromedioEdades());
 					break;
 					
 				case 5:
@@ -59,7 +62,7 @@ public class PruebaHashMap {
 				ra.limpiarMemoria();
 			}
 		}
-
+		System.out.println("X.X");
 	}
 
 }

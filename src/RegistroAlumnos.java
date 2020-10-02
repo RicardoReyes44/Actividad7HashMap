@@ -15,7 +15,25 @@ public class RegistroAlumnos {
 
     public void vaciarLista() {
 		mapNombres.clear();
+		System.out.println("Lista vaciada");
 	}
+    
+    
+    public int calcularPromedioEdades() {
+    	if(mapNombres.size()!=0) {
+    	    int edades = 0;
+    	    ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>(mapNombres.values());
+
+		    for(Alumno al: listaAlumnos) {
+			    edades += al.getEdad();
+		    }
+
+    	    return edades/listaAlumnos.size();
+        }else {
+        	System.out.println("No hay elementos");
+        	return 0;
+        }
+    }
     
     
     public void llenarLista() throws InputMismatchException{
@@ -23,10 +41,10 @@ public class RegistroAlumnos {
     	String nombre;
     	int folio;
     	String fecha = "";
-    	
+
+
     	System.out.print("Introduce nombre: ");
 		nombre = entrada.nextLine();
-
 
     	while(true) {
     		System.out.print("Introduce edad: ");
@@ -43,7 +61,7 @@ public class RegistroAlumnos {
     	if(mapNombres.isEmpty()) {
     		folio = 1;
     	}else {
-    		folio = mapNombres.get(mapNombres.size()-1).getFolio()+1;
+    		folio = mapNombres.get(mapNombres.size()).getFolio()+1;
     	}
 
 
@@ -89,6 +107,7 @@ public class RegistroAlumnos {
     			System.out.println("Opcion inexistente, por favor vuelve a intentarlo");
     		}
     	}
+    	limpiarMemoria();
     	
     	return carreras[opcion-1];
 	}
@@ -101,19 +120,46 @@ public class RegistroAlumnos {
 	
 	public void mostrarInscritosDespues() {
 		
-		ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>(mapNombres.values());
+		if(mapNombres.size()!=0) {
+		    ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>(mapNombres.values());
 
-		for(Alumno al: listaAlumnos) {
-			String fecha[] = al.getFechaInscripcion().split("/");
-			if(Integer.parseInt(fecha[2])>2016) {
-			    System.out.println(al);
-			}else if(Integer.parseInt(fecha[2])==2016 && Integer.parseInt(fecha[1])>8) {
-				System.out.println(al);
-			}else if(Integer.parseInt(fecha[2])==2016 && Integer.parseInt(fecha[1])==8 && Integer.parseInt(fecha[0])>10) {
-				System.out.println(al);
-			}
+		    for(Alumno al: listaAlumnos) {
+			    String fecha[] = al.getFechaInscripcion().split("/");
+			    if(Integer.parseInt(fecha[2])>2016) {
+			        System.out.println(al);
+			    }else if(Integer.parseInt(fecha[2])==2016 && Integer.parseInt(fecha[1])>8) {
+				    System.out.println(al);
+			    }else if(Integer.parseInt(fecha[2])==2016 && Integer.parseInt(fecha[1])==8 && Integer.parseInt(fecha[0])>10) {
+				    System.out.println(al);
+			    }
+		    }
+		}else {
+			System.out.println("No hay elementos");
 		}
 		
+	}
+	
+	
+	public void mostrarAlumnosCarrera() {
+		if(mapNombres.size()==0) {
+			System.out.println("No hay elementos");
+		}else {
+		    String carrera = seleccionarCarrera();
+		    int cont=0;
+		    ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>(mapNombres.values());
+		
+		    for(Alumno al: listaAlumnos) {
+			    if(carrera.equals(al.getCarrera())) {
+				    System.out.println(al);
+			    }else {
+				    cont++;
+			    }
+		    }
+		
+		    if(cont==listaAlumnos.size()) {
+			    System.out.println("No hay alumnos con esa carrera");
+		    }
+	    }
 	}
 	
 }

@@ -8,6 +8,20 @@ public class PruebaHashMap {
 		Scanner entrada = new Scanner(System.in);
 		RegistroAlumnos ra = new RegistroAlumnos();
 		boolean candado = true;
+		int cont = 5;
+		
+		while(cont>1) {
+			System.out.println("Debes de ingresar " + cont + " alumnos para poder empezar");
+			try {
+				ra.llenarLista();
+				cont--;
+			}catch(InputMismatchException error) {
+				System.out.println("Error <" + error + "> valor invalido\n");
+				ra.limpiarMemoria();
+			}
+		}
+		
+		candado = true;
 		
 		while(candado) {
 			System.out.println("----------Menu principal-----------");
